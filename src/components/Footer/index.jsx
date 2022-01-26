@@ -91,11 +91,11 @@ function Footer() {
     return(
         <FooterContainer theme={theme}>
             <LinksContainer>
-                <RotatingLink href="https://www.linkedin.com/in/julien-grang%C3%A9-guermente-80b8bb5b/" theme={theme}>
+                <RotatingLink href="https://www.linkedin.com/in/julien-grang%C3%A9-guermente-80b8bb5b/" theme={theme} target={"_blank"}>
                     <span>LinkedIn</span>
                     <span>LinkedIn</span>
                 </RotatingLink>
-                <RotatingLink href="https://twitter.com/aldnunc" theme={theme}>
+                <RotatingLink href="https://twitter.com/aldnunc" theme={theme} target={"_blank"}>
                     <span>Twitter</span>
                     <span>Twitter</span>
                 </RotatingLink>
