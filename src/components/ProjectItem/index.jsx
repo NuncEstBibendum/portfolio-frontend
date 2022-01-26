@@ -18,7 +18,7 @@ function ProjectItem({ _id, title, subtitle, year, description, imgUrl }) {
     const handleDelete = async (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:3000/api/project/${_id}`, {
+        fetch(`https://portfolio-julien-gg.herokuapp.com/api/project/${_id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
@@ -50,7 +50,7 @@ function ProjectItem({ _id, title, subtitle, year, description, imgUrl }) {
     const handleEdit = async (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:3000/api/project/${_id}`, {
+        fetch(`https://portfolio-julien-gg.herokuapp.com/api/project/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",

@@ -1,21 +1,9 @@
 import styled from "styled-components";
 import colors from "../../utils/style/colors";
-import { keyframes } from "styled-components";
 import { useTheme } from "../../utils/hooks";
 import { useEffect } from "react";
 import Aos from 'aos';
 import "aos/dist/aos.css";
-
-const spanFadeIn = keyframes`
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-`
 
 const Container = styled.div`
     min-height: 80vh;
@@ -44,22 +32,6 @@ const Title = styled.h1`
         font-family: "Playfair Display";
         font-weight: 500;
         color: ${({theme}) => (theme === 'colorMode0' ? colors.accent0 : theme === 'colorMode1' ? colors.accent1 : theme === 'colorMode2' ? colors.accent2 : theme === 'colorMode3' ? colors.accent3 : theme === 'colorMode4' ? colors.accent4 : theme === 'colorMode5' ? colors.accent5 : colors.accent0)};
-    }
-    > .reveal-container {
-        overflow: hidden;
-        display: block;
-        &:nth-child(2) .reveal-content {
-            animation-delay: 250ms;
-        }
-        &:nth-child(3) .reveal-content {
-            animation-delay: 500ms;
-        }
-        > .reveal-content {
-            opacity: 0;
-            display: block;
-            animation: ${spanFadeIn} 800ms ease forwards;
-            transform: translateY(100%);
-        }
     }
 `
 

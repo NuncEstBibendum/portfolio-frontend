@@ -101,13 +101,13 @@ function Admin() {
     const [description, setDescription] = useState('');
     const [imgUrl, setImgUrl] = useState('');
 
-    const { data, isLoading, error } = useFetch(`http://localhost:3000/api/project`);
+    const { data, isLoading, error } = useFetch(`https://portfolio-julien-gg.herokuapp.com/api/project`);
 
     // --------------- Start handleCreate() function --------------- //
     const handleCreate = async (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:3000/api/project`, {
+        fetch(`https://portfolio-julien-gg.herokuapp.com/api/project`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -145,6 +145,7 @@ function Admin() {
     if (error) return <p>{error}</p>
     if (isCreating) return (
         <CreateProject>
+                <CustomCursor />
                 <input type="text" placeholder="Titre" onChange={(e) => setTitle(e.target.value)}/>
                 <input type="text" placeholder="Sous-titre" onChange={(e) => setSubtitle(e.target.value)} />
                 <input type="number" placeholder="Année" onChange={(e) => setYear(e.target.value)} />

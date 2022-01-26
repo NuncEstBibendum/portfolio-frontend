@@ -171,7 +171,7 @@ const DeckOfCards = styled.div`
 function Home() {
     const { theme } = useTheme();
     const [scrollTop, setScrollTop] = useState(0);
-    const { data, isLoading, error } = useFetch(`http://localhost:3000/api/project`);
+    const { data, isLoading, error } = useFetch(`https://portfolio-julien-gg.herokuapp.com/api/project`);
 
         // useEffect for fadein animations on paragraphs and images
         useEffect(() => {

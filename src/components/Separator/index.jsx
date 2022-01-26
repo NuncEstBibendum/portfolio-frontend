@@ -67,9 +67,12 @@ const MovingSeparator1 = styled.div`
     span {
         color: ${({theme}) => (theme === 'colorMode0' ? colors.accent0 : theme === 'colorMode1' ? colors.accent1 : theme === 'colorMode2' ? colors.accent2 : theme === 'colorMode3' ? colors.accent3 : theme === 'colorMode4' ? colors.accent4 : theme === 'colorMode5' ? colors.accent5 : colors.accent0)};
     }
+    animation: ${separatorAnimation1} 240s linear infinite;
 `
 
 const MovingSeparator2 = styled(MovingSeparator1)`
+animation: ${separatorAnimation2} 240s linear infinite;
+animation-delay: -120s;
 `
 
 
@@ -102,8 +105,16 @@ function Separator({content}) {
                     <p><span>{content}</span></p>
                     <p>{content}</p>
                     <p><span>{content}</span></p>
+                    <p>{content}</p>
+                    <p><span>{content}</span></p>
+                    <p>{content}</p>
+                    <p><span>{content}</span></p>
                 </MovingSeparator1>
                 <MovingSeparator2 theme={theme} id='moving-separator-2'>
+                    <p>{content}</p>
+                    <p><span>{content}</span></p>
+                    <p>{content}</p>
+                    <p><span>{content}</span></p>
                     <p>{content}</p>
                     <p><span>{content}</span></p>
                     <p>{content}</p>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useTheme } from "../../utils/hooks";
 import colors from "../../utils/style/colors";
+import CustomCursor from "../CustomCursor";
 
 const Container = styled.div`
     width: 80%;
@@ -65,7 +66,7 @@ function Login(props) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        fetch('http://localhost:3000/api/auth/login', {
+        fetch('https://portfolio-julien-gg.herokuapp.com/api/auth/login', {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -101,6 +102,7 @@ function Login(props) {
 
     return(
         <Container>
+            <CustomCursor />
             <LoginForm action="" onSubmit={(e) => handleSubmit(e)}>
                 <LoginInput 
                     type="email" 

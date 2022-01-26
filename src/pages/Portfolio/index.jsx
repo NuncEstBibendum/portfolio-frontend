@@ -106,7 +106,7 @@ const DeckOfCards = styled.div`
 
 function Portfolio() {
     const { theme } = useTheme();
-    const { data, isLoading, error } = useFetch(`http://localhost:3000/api/project`);
+    const { data, isLoading, error } = useFetch(`https://portfolio-julien-gg.herokuapp.com/api/project`);
 
     if (isLoading) return <Loader />;
     if (error) return { error };
