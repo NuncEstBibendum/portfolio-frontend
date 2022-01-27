@@ -24,6 +24,7 @@ const Title = styled.h1`
     font-weight: 400;
     margin-bottom: 75px;
     font-size: 2.5rem;
+    text-transform: uppercase;
 `
 
 const Subtitle = styled.h3`
@@ -31,11 +32,8 @@ const Subtitle = styled.h3`
     text-transform: uppercase;
     font-size: 1rem;
     margin-top: 75px;
-
-    &:nth-first-child {
-        margin-top: 0;
-    }
 `
+
 
 const SecondaryTitle = styled.h2`
     font-weight: 400;
@@ -111,7 +109,7 @@ function About() {
         <Container id="top">
             <TopSpacing />
             <CustomCursor />
-            <Subtitle data-aos="fade-up">Ce que je fais</Subtitle>
+            <Subtitle data-aos="fade-up" style={{marginTop: "0"}}>Ce que je fais</Subtitle>
             <Title data-aos="fade-up">De l'intégration à la création sur-mesure</Title>
             <Content theme={theme}>
                 <ContentText style={{width: '100%'}} data-aos="fade-up">

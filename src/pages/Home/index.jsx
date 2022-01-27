@@ -257,7 +257,7 @@ function Home() {
 
             <Separator content={'Découvrez mes projets'}/>
 
-            <Section className="portfolio">
+            <Section className="portfolio" style={{maxWidth: "1300px"}} >
                 <DeckOfCards>
                     <Masonry
                         breakpointCols={breakpointColumnsObj}
