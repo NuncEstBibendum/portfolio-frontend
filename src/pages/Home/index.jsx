@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import HeroBgImg from "../../assets/photo_julien.jpg";
+import webdesignImg from "../../assets/webdesign.jpg";
 import colors from "../../utils/style/colors";
 import Separator from "../../components/Separator";
 import CardFolio from "../../components/CardFolio";
@@ -96,8 +97,9 @@ const HeroImg = styled.img`
     object-position: top;
     left: 40%;
     width: 100%;
+    height: 100%;
     z-index: -3;
-    max-height: 500px;
+    // max-height: 500px;
     max-width: 500px;
     transition: transform ease-in-out 100ms;
     @media (min-width: 1100px) {
@@ -125,25 +127,66 @@ const Section = styled.section`
     width: 100%;
     margin: 0 auto;
     text-align: justify;
+    position: relative;
+    max-width: 810px;
+    overflow: hidden;
+`
+
+const SectionImg = styled.img`
+    position: absolute;
+    object-fit: cover;
+    object-position: top;
+    right: 70%;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    max-width: 500px;
+    transition: transform ease-in-out 100ms;
+    @media (min-width: 800px) {
+        right: 60%;
+    }
+    @media (min-width: 1100px) {
+        transform: scale(1);
+    }
+`
+
+const SectionTitle = styled(Title)`
+    text-align: right;
+    padding-top: 30px;
+    margin-top: 0;
+    margin-right: 30px;
+    @media (min-width: 800px) {
+        width: 80%;
+        margin-left: auto;
+    }
 `
 
 const SectionContent = styled.div`
     font-size: 1.25rem;
     font-weight: 300;
     max-width: 810px;
-    padding: 0 30px;
-    margin: 0 auto 30px auto;
+    padding: 30px 30px;
+    margin-left: auto;
+    width: 70%;
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    mix-blend-mode: difference;
+    color: ${({theme}) => (theme === 'colorMode0' ? colors.textColor0 : theme === 'colorMode1' ? 'antiquewhite' : theme === 'colorMode2' ? colors.textColor2 : theme === 'colorMode3' ? colors.textColor3 : theme === 'colorMode4' ? 'antiquewhite' : theme === 'colorMode5' ? colors.textColor5 : colors.textColor0)};
+    
     span {
         color: ${({theme}) => (theme === 'colorMode0' ? colors.accent0 : theme === 'colorMode1' ? colors.accent1 : theme === 'colorMode2' ? colors.accent2 : theme === 'colorMode3' ? colors.accent3 : theme === 'colorMode4' ? colors.accent4 : theme === 'colorMode5' ? colors.accent5 : colors.accent0)};
     }
 
     p + p {
         margin-top: 25px;
+    }
+
+    @media (min-width: 800px) {
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
     }
 `
 
@@ -235,11 +278,12 @@ function Home() {
                 </DeckOfCards>
             </Section>
 
-            <Separator content={'À propos de moi'}/>
+            <Separator content={'À propos de moi'} />
 
             <Section>
+                <SectionImg src={webdesignImg} />
+                <SectionTitle theme={theme} data-aos="fade-up">Développeur <span className="accent">frontend React</span> et <span className="accent">intégrateur</span> sur Lyon en freelance.</SectionTitle>
                 <SectionContent theme={theme}>
-                    <p data-aos="fade-up">Développeur <span>frontend React</span> et <span>intégrateur</span> sur Lyon en freelance.</p>
                     <p data-aos="fade-up">J'ai toujours voulu créer de nouvelles choses et apporter mon expertise à des projets innovants.
                         Pour chaque projet, j'apporte une attention particulière à la <span>fluidité</span> des interactions ainsi qu'aux
                         <span> performances</span> de votre site afin d'offrir à vos visiteurs une expérience mémorable.</p>

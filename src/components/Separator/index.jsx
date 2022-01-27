@@ -29,7 +29,7 @@ const SeparatorContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 0;
 `
 
 const MovingSeparatorMobile1 = styled.div`
