@@ -4,12 +4,24 @@ import { useTheme } from "../../utils/hooks";
 import { useEffect } from "react";
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import ImgJulien from "../../assets/pp_julien.jpg";
 
 const Container = styled.div`
     min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+`
+
+const Image = styled.img`
+    object-fit: cover;
+    object-position: left;
+    border-radius: 50%;
+    align-self: center;
+    width: 300px;
+    height: 300px;
+    margin: 50px 0 25px 0;
+    transition: transform ease-in-out 100ms;
 `
 
 const Title = styled.h1`
@@ -36,7 +48,7 @@ const Title = styled.h1`
 `
 
 const RotatingLink = styled.a`
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     position: relative;
     width: 300px;
     padding: 12px 0;
@@ -88,9 +100,10 @@ function ContactComponent() {
     }, [])
 
     return(
-        <Container data-aos="fade-left">
-            <Title theme={theme}>Vous avez envie de <a href="mailto:julien.grangeguermente@gmail.com"><span className="accent">discuter</span></a> d'un projet ? Je serai ravi de vous aider !</Title>
-            <RotatingLink href="mailto:julien.grangeguermente@gmail.com" theme={theme}>
+        <Container>
+            <Image src={ImgJulien} />
+            <Title data-aos="fade-left" theme={theme}>Vous avez envie de <a href="mailto:hello@julien.gg"><span className="accent">discuter</span></a> d'un projet ? Je serai ravi de vous aider !</Title>
+            <RotatingLink href="mailto:hello@julien.gg" theme={theme} data-aos="fade-left">
                 <span>Envoyez-moi un email</span>
                 <span>Envoyez-moi un email</span>
             </RotatingLink>
