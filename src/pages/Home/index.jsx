@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import HeroBgImg from "../../assets/photo_julien.jpg";
+import HeroBgImg from "../../assets/hero_picture.jpg";
 import webdesignImg from "../../assets/webdesign.jpg";
 import colors from "../../utils/style/colors";
 import Separator from "../../components/Separator";
@@ -61,7 +61,7 @@ const HeroTitle = styled.div`
 const Title = styled.h1`
     margin-top: 75px;
     font-weight: 400;
-    font-size: 3.2rem;
+    font-size: 3rem;
     text-transform: uppercase;
     line-height: 1;
     letter-spacing: -3px;
@@ -99,7 +99,6 @@ const HeroImg = styled.img`
     width: 100%;
     height: 100%;
     z-index: -3;
-    // max-height: 500px;
     max-width: 500px;
     transition: transform ease-in-out 100ms;
     @media (min-width: 1100px) {
@@ -236,73 +235,143 @@ function Home() {
 
     if (isLoading) return <Loader />;
     if (error) return {error};
-    return(
-        <GlobalContainer>
+    if (window.screen.width <= 1100) {
+        return(
+            <GlobalContainer>
                 <CustomCursor />
-            <Hero>
-                <HeroTitle>
-                    <Title theme={theme}>
-                        <span className="reveal-container"><span className="reveal-content">Je suis <span className="accent">Julien Grangé</span>, <br/></span></span>
-                        <span className="reveal-container"><span className="reveal-content">Développeur front-end</span></span>
-                        <span className="reveal-container"><span className="reveal-content">freelance</span></span>
-                    </Title>
-                    <div className="img-container">
-                        <HeroImg src={HeroBgImg} alt="" id="hero-img"/>
-                    </div>
-                </HeroTitle>
-                <HeroContent>
-                    <p>Bienvenue dans mon <span>portfolio</span></p>
-                </HeroContent>
-            </Hero>
-
-            <Separator content={'Découvrez mes projets'}/>
-
-            <Section className="portfolio" style={{maxWidth: "1300px"}} >
-                <DeckOfCards>
-                    <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="my-masonry-grid"
-                        columnClassName="my-masonry-grid_column"
-                    >
-                    {data.map((project) => (
-                        <CardFolio className='card'
-                            key={project._id}
-                            id= {project._id}
-                            title = {project.title}
-                            subtitle = {project.subtitle}
-                            year = {project.year}
-                            imgUrl = {project.imgUrl}
-                        />
-                    ))}
-                    </Masonry>
-                </DeckOfCards>
-            </Section>
-
-            <Separator content={'À propos de moi'} />
-
-            <Section>
-                <SectionImg src={webdesignImg} />
-                <SectionTitle theme={theme} data-aos="fade-up">Développeur <span className="accent">frontend React</span> et <span className="accent">intégrateur</span> sur Lyon en freelance.</SectionTitle>
-                <SectionContent theme={theme}>
-                    <p data-aos="fade-up">J'ai toujours voulu créer de nouvelles choses et apporter mon expertise à des projets innovants.
-                        Pour chaque projet, j'apporte une attention particulière à la <span>fluidité</span> des interactions ainsi qu'aux
-                        <span> performances</span> de votre site afin d'offrir à vos visiteurs une expérience mémorable.</p>
-                    <p data-aos="fade-up">Je m'adapte à vos besoins pour créer le site qui vous convient. J'ai l'habitude de baser mon travail
-                        sur <span>Wordpress</span> mais aussi sur des <span>CMS Headless</span> tels que Strapi pour la gestion de contenu. Je travaille
-                        aussi bien en javascript vanilla sur les petits projets, que sur le framework React, pour les projets
-                        d'envergures.Mes connaissances en backend me permettent de <span>créer et d'adapter une API</span> à vos besoins, 
-                        en lien avec le frontend.</p>
-                </SectionContent>
-            </Section>
-
-            <Separator content={'Contactez-moi'} id="contact" />
-
-            <Section>
-                <ContactComponent />
-            </Section>
-
-        </GlobalContainer>
-    )
+                <Hero>
+                    <HeroTitle>
+                        <Title theme={theme}>
+                            <span className="reveal-container"><span className="reveal-content">Je suis <span className="accent">Julien Grangé</span>, <br/></span></span>
+                            <span className="reveal-container"><span className="reveal-content">Développeur front-end</span></span>
+                            <span className="reveal-container"><span className="reveal-content">freelance</span></span>
+                        </Title>
+                        <div className="img-container">
+                            <HeroImg src={HeroBgImg} alt="" id="hero-img"/>
+                        </div>
+                    </HeroTitle>
+                    <HeroContent>
+                        <p>Bienvenue dans mon <span>portfolio</span></p>
+                    </HeroContent>
+                </Hero>
+    
+                <Separator content={'Découvrez mes projets'}/>
+    
+                <Section className="portfolio" style={{maxWidth: "1300px"}} >
+                    <DeckOfCards>
+                        <Masonry
+                            breakpointCols={breakpointColumnsObj}
+                            className="my-masonry-grid"
+                            columnClassName="my-masonry-grid_column"
+                        >
+                        {data.map((project) => (
+                            <CardFolio className='card'
+                                key={project._id}
+                                id= {project._id}
+                                title = {project.title}
+                                subtitle = {project.subtitle}
+                                year = {project.year}
+                                imgUrl = {project.imgUrl}
+                            />
+                        ))}
+                        </Masonry>
+                    </DeckOfCards>
+                </Section>
+    
+                <Separator content={'À propos de moi'} />
+    
+                <Section>
+                    <SectionImg src={webdesignImg} />
+                    <SectionTitle theme={theme}>Développeur <span className="accent">frontend React</span> et <span className="accent">intégrateur</span> sur Lyon en freelance.</SectionTitle>
+                    <SectionContent theme={theme}>
+                        <p>J'ai toujours voulu créer de nouvelles choses et apporter mon expertise à des projets innovants.
+                            Pour chaque projet, j'apporte une attention particulière à la <span>fluidité</span> des interactions ainsi qu'aux
+                            <span> performances</span> de votre site afin d'offrir à vos visiteurs une expérience mémorable.</p>
+                        <p>Je m'adapte à vos besoins pour créer le site qui vous convient. J'ai l'habitude de baser mon travail
+                            sur <span>Wordpress</span> mais aussi sur des <span>CMS Headless</span> tels que Strapi pour la gestion de contenu. Je travaille
+                            aussi bien en javascript vanilla sur les petits projets, que sur le framework React, pour les projets
+                            d'envergures.Mes connaissances en backend me permettent de <span>créer et d'adapter une API</span> à vos besoins, 
+                            en lien avec le frontend.</p>
+                    </SectionContent>
+                </Section>
+    
+                <Separator content={'Contactez-moi'} id="contact" />
+    
+                <Section>
+                    <ContactComponent />
+                </Section>
+    
+            </GlobalContainer>
+        )
+    } else {
+        return(
+            <GlobalContainer>
+                    <CustomCursor />
+                <Hero>
+                    <HeroTitle>
+                        <Title theme={theme}>
+                            <span className="reveal-container"><span className="reveal-content">Je suis <span className="accent">Julien Grangé</span>, <br/></span></span>
+                            <span className="reveal-container"><span className="reveal-content">Développeur front-end</span></span>
+                            <span className="reveal-container"><span className="reveal-content">freelance</span></span>
+                        </Title>
+                        <div className="img-container">
+                            <HeroImg src={HeroBgImg} alt="" id="hero-img"/>
+                        </div>
+                    </HeroTitle>
+                    <HeroContent>
+                        <p>Bienvenue dans mon <span>portfolio</span></p>
+                    </HeroContent>
+                </Hero>
+    
+                <Separator content={'Découvrez mes projets'}/>
+    
+                <Section className="portfolio" style={{maxWidth: "1300px"}} >
+                    <DeckOfCards>
+                        <Masonry
+                            breakpointCols={breakpointColumnsObj}
+                            className="my-masonry-grid"
+                            columnClassName="my-masonry-grid_column"
+                        >
+                        {data.map((project) => (
+                            <CardFolio className='card'
+                                key={project._id}
+                                id= {project._id}
+                                title = {project.title}
+                                subtitle = {project.subtitle}
+                                year = {project.year}
+                                imgUrl = {project.imgUrl}
+                            />
+                        ))}
+                        </Masonry>
+                    </DeckOfCards>
+                </Section>
+    
+                <Separator content={'À propos de moi'} />
+    
+                <Section>
+                    <SectionImg src={webdesignImg} />
+                    <SectionTitle theme={theme} data-aos="fade-up">Développeur <span className="accent">frontend React</span> et <span className="accent">intégrateur</span> sur Lyon en freelance.</SectionTitle>
+                    <SectionContent theme={theme}>
+                        <p data-aos="fade-up">J'ai toujours voulu créer de nouvelles choses et apporter mon expertise à des projets innovants.
+                            Pour chaque projet, j'apporte une attention particulière à la <span>fluidité</span> des interactions ainsi qu'aux
+                            <span> performances</span> de votre site afin d'offrir à vos visiteurs une expérience mémorable.</p>
+                        <p data-aos="fade-up">Je m'adapte à vos besoins pour créer le site qui vous convient. J'ai l'habitude de baser mon travail
+                            sur <span>Wordpress</span> mais aussi sur des <span>CMS Headless</span> tels que Strapi pour la gestion de contenu. Je travaille
+                            aussi bien en javascript vanilla sur les petits projets, que sur le framework React, pour les projets
+                            d'envergures.Mes connaissances en backend me permettent de <span>créer et d'adapter une API</span> à vos besoins, 
+                            en lien avec le frontend.</p>
+                    </SectionContent>
+                </Section>
+    
+                <Separator content={'Contactez-moi'} id="contact" />
+    
+                <Section>
+                    <ContactComponent />
+                </Section>
+    
+            </GlobalContainer>
+        )
+    }
 }
 
 export default Home;

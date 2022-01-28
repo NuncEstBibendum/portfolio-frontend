@@ -99,16 +99,29 @@ function ContactComponent() {
         Aos.init({duration: 2000});
     }, [])
 
-    return(
-        <Container>
-            <Image src={ImgJulien} />
-            <Title data-aos="fade-left" theme={theme}>Vous avez envie de <a href="mailto:hello@julien.gg"><span className="accent">discuter</span></a> d'un projet ? Je serai ravi de vous aider !</Title>
-            <RotatingLink href="mailto:hello@julien.gg" theme={theme} data-aos="fade-left">
-                <span>Envoyez-moi un email</span>
-                <span>Envoyez-moi un email</span>
-            </RotatingLink>
-        </Container>
-    )
+    if (window.screen.width <= 1100) {
+        return(
+            <Container>
+                <Image src={ImgJulien} />
+                <Title theme={theme}>Vous avez envie de <a href="mailto:hello@julien.gg"><span className="accent">discuter</span></a> d'un projet ? Je serai ravi de vous aider !</Title>
+                <RotatingLink href="mailto:hello@julien.gg" theme={theme} >
+                    <span>Envoyez-moi un email</span>
+                    <span>Envoyez-moi un email</span>
+                </RotatingLink>
+            </Container>
+        )
+    } else {
+        return(
+            <Container>
+                <Image src={ImgJulien} />
+                <Title data-aos="fade-left" theme={theme}>Vous avez envie de <a href="mailto:hello@julien.gg"><span className="accent">discuter</span></a> d'un projet ? Je serai ravi de vous aider !</Title>
+                <RotatingLink href="mailto:hello@julien.gg" theme={theme} data-aos="fade-left">
+                    <span>Envoyez-moi un email</span>
+                    <span>Envoyez-moi un email</span>
+                </RotatingLink>
+            </Container>
+        )
+    }
 }
 
 export default ContactComponent;

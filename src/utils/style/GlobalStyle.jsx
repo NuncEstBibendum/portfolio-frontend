@@ -32,7 +32,6 @@ const StyledGlobalStyle = createGlobalStyle`
     }
 
     body {
-        overflow-x: hidden;
         background: url(${backgroundStars}), ${(props) => 
             props.colorModeNumber === 'colorMode0' ? colors.backgroundColor0 : 
             props.colorModeNumber === 'colorMode1' ? colors.backgroundColor1 :
@@ -52,8 +51,10 @@ const StyledGlobalStyle = createGlobalStyle`
             colors.textColor0
         };
         background-position: 0 0;
-        animation: ${backgroundScroll} linear 600s infinite;
         scroll-behavior: smooth;
+        @media (min-width: 1100px) {
+            animation: ${backgroundScroll} linear 600s infinite;
+        }
     }
 `
 

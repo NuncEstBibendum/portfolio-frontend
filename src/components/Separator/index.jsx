@@ -36,7 +36,7 @@ const MovingSeparatorMobile1 = styled.div`
     display: flex;
     justify-content: flex-start;
     font-size: 35px;
-    animation: ${separatorAnimation1} 30s linear infinite;
+    animation: ${separatorAnimation1} 120s linear infinite;
     text-transform: uppercase;
     p {
         margin-left: 25px;
@@ -48,8 +48,8 @@ const MovingSeparatorMobile1 = styled.div`
 `
 
 const MovingSeparatorMobile2 = styled(MovingSeparatorMobile1)`
-    animation: ${separatorAnimation2} 30s linear infinite;
-    animation-delay: -15s;
+    animation: ${separatorAnimation2} 120s linear infinite;
+    animation-delay: -60s;
 `
 
 const MovingSeparator1 = styled.div`

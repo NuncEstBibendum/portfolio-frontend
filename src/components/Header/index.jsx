@@ -31,7 +31,7 @@ const Container = styled.div`
     background-color: ${({theme}) => (theme === 'colorMode0' ? 'rgba(0, 0, 0, var(--navbarOpacity))' : theme === 'colorMode1' ? 'rgba(255, 255, 255, var(--navbarOpacity))' : theme === 'colorMode2' ? 'rgba(91, 132, 177, var(--navbarOpacity))' : theme === 'colorMode3' ? 'rgba(95, 75, 139, var(--navbarOpacity))' : theme === 'colorMode4' ? 'rgba(242, 170, 76, var(--navbarOpacity))' : theme === 'colorMode5' ? 'rgba(0, 32, 63, var(--navbarOpacity))' : 'rgba(0, 0, 0, var(--navbarOpacity))')};
     transition: background-color ease-in-out 300ms;
     border-bottom: 1px solid ${({theme}) => (theme === 'colorMode0' ? colors.textColor0 : theme === 'colorMode1' ? colors.textColor1 : theme === 'colorMode2' ? colors.textColor2 : theme === 'colorMode3' ? colors.textColor3 : theme === 'colorMode4' ? colors.textColor4 : theme === 'colorMode5' ? colors.textColor5 : colors.textColor0)};
-    z-index: 1;
+    z-index: 10;
     scroll-behavior: smooth;
 `
 
@@ -202,7 +202,8 @@ const NavLink = styled(HashLink)`
 
 const WhiteScreen = styled.div`
     background-color: ${({theme}) => (theme === 'colorMode0' ? colors.accent0 : theme === 'colorMode1' ? colors.accent1 : theme === 'colorMode2' ? colors.accent2 : theme === 'colorMode3' ? colors.accent3 : theme === 'colorMode4' ? colors.accent4 : theme === 'colorMode5' ? colors.accent5 : colors.accent0)};
-    transform: translateX(100%);
+    transform: scaleX(0);
+    transform-origin: right;
     height: 100vh;
     width: 100vw;
     transition: transform ease 250ms;
@@ -236,7 +237,7 @@ function Header() {
     function revealMenu() {
         setMenuIsOpen(!menuIsOpen);
         const whiteScreen = document.getElementById('white-screen');
-        whiteScreen.style.transform = "translateX(0)";
+        whiteScreen.style.transform = "scaleX(1)";
 
         setTimeout(() => {
             const navigationLinks = document.querySelectorAll('.nav__link');
@@ -247,10 +248,15 @@ function Header() {
             } else {
                 navigationLinks.forEach((link) => {
                     link.style.opacity = "0";
+                    scrollToTop();
                 })
-                whiteScreen.style.transform = "translateX(100%)";
+                whiteScreen.style.transform = "scaleX(0)";
             }
         }, 300);
+    }
+
+    function scrollToTop() {
+        window.scrollTo(0, 0);
     }
 
     // on click on a menu item, hide the menu
@@ -261,11 +267,12 @@ function Header() {
 
 
 
+
     return(
         <Container id="navbar-container" theme={theme}>
             <Nav>
                 <WhiteScreen id="white-screen" theme={theme}></WhiteScreen>
-                <HashLink to="/#top">
+                <HashLink to="/" onClick={() => scrollToTop()}>
                 <NavImg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 793 505" width='200' height='100' theme={theme}>
                     <defs>
                     </defs>
@@ -278,20 +285,20 @@ function Header() {
                     <span></span>
                     <span></span>
                     <NavLinks theme={theme}>
-                        <HashLink to="/#top" onClick={() => hideMenu()}>
+                        <HashLink to="/" onClick={() => hideMenu()}>
                             <NavImg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 793 505" width='200' height='100' theme={theme}>
                                 <path strokeWidth="0" id="cls-1" d="M770.91,21.09A71.77,71.77,0,0,0,720,0H72A72,72,0,0,0,0,72V432a72,72,0,0,0,72,72H720a72,72,0,0,0,72-72V72A71.77,71.77,0,0,0,770.91,21.09ZM720,144H576a72,72,0,0,0-72,72v72a72,72,0,0,0,144,0H576V216H720V432H432V144H216a72,72,0,0,0-72,72v72a72,72,0,0,0,144,0H216V216H360V432H72V72H720Z" transform="translate(0.5 0.5)" fill='#fff' stroke="url(#logoGradient)" />
                             </NavImg>
                         </HashLink>
-                        <NavLink className="nav__link" to="/portfolio#top" onClick={() => hideMenu()} theme={theme}>
+                        <NavLink className="nav__link" to="/portfolio" onClick={() => hideMenu()} theme={theme}>
                             <div><li className="li1">Portfolio</li></div>
                             <div><li className="li2">Portfolio</li></div>
                         </NavLink>
-                        <NavLink className="nav__link" to="/about#top" onClick={() => hideMenu()} theme={theme}>
+                        <NavLink className="nav__link" to="/about" onClick={() => hideMenu()} theme={theme}>
                             <div><li className="li1">About</li></div>
                             <div><li className="li2">About</li></div>
                         </NavLink>
-                        <NavLink className="nav__link" to="/contact#top" onClick={() => hideMenu()} theme={theme}>
+                        <NavLink className="nav__link" to="/contact" onClick={() => hideMenu()} theme={theme}>
                             <div><li className="li1">Contact</li></div>
                             <div><li className="li2">Contact</li></div>
                         </NavLink>

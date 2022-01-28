@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import codeBackground from '../../assets/01.svg';
 import { keyframes } from "styled-components";
+import CustomCursor from "../CustomCursor";
 
 const backgroundScroll = keyframes`
     0% {
@@ -47,6 +48,7 @@ const ErrorContent = styled.p`
 function Error() {
     return(
         <Container>
+            <CustomCursor />
             <TitleAnimate>&lt;404&gt;</TitleAnimate>
             <ErrorContent>Ce n'est pas la page que vous cherchez...</ErrorContent>
         </Container>

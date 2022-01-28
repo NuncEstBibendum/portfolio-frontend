@@ -43,12 +43,11 @@ const CardContainer = styled.article`
         opacity: 0;
         position: absolute;
         left: 50%;
-        z-index:-1;
+        z-index:1;
         text-align: center;
         transform: translateX(-50%);
         transition: opacity 500ms ease;
         bottom: 50px;
-        z-index: 1;
     }
 
     .tilt-card {
@@ -115,21 +114,39 @@ function CardFolio({ id, year, title, subtitle, imgUrl }) {
         Aos.init({duration: 2000});
     }, [])
 
-    return(
-        <CardContainer theme={theme} data-aos="fade-up">
-            <HashLink to={`/project/${id}#top`}>
-                <Card className='tilt-card' style={{ padding: '0' }}>
-                    <div className="card__header">
-                        <h3>{year}</h3>
-                        <h2>{title}</h2>
-                        <h3>{subtitle}</h3>
-                    </div>
-                    <img src={imgUrl} alt=""/>
-                    <p>Aller voir le projet</p>
-                </Card>
-            </HashLink>
-        </CardContainer>
-    )
+    if (window.screen.width <= 1100) {
+        return (
+            <CardContainer theme={theme}>
+                <HashLink to={`/project/${id}#top`}>
+                    <Card className='tilt-card' style={{ padding: '0' }}>
+                        <div className="card__header">
+                            <h3>{year}</h3>
+                            <h2>{title}</h2>
+                            <h3>{subtitle}</h3>
+                        </div>
+                        <img src={imgUrl} alt=""/>
+                        <p>Aller voir le projet</p>
+                    </Card>
+                </HashLink>
+            </CardContainer>
+        )
+    } else {
+        return(
+            <CardContainer theme={theme} data-aos="fade-up">
+                <HashLink to={`/project/${id}#top`}>
+                    <Card className='tilt-card' style={{ padding: '0' }}>
+                        <div className="card__header">
+                            <h3>{year}</h3>
+                            <h2>{title}</h2>
+                            <h3>{subtitle}</h3>
+                        </div>
+                        <img src={imgUrl} alt=""/>
+                        <p>Aller voir le projet</p>
+                    </Card>
+                </HashLink>
+            </CardContainer>
+        )
+    }
 }
 
 export default CardFolio;
