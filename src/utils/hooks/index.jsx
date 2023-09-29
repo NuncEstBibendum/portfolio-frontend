@@ -1,33 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { ThemeContext } from '../context'
-
-// Function to fetch data on API
-export function useFetch(url) {
-    const [data, setData] = useState([]);
-    const [isLoading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
-    useEffect(() => {
-        if (!url) return;
-        setLoading(true);
-        async function fetchData() {
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-                setData(json);
-            } catch (err) {
-                console.log(err);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchData()
-    }, [url])
-    return { isLoading, data, error };
-}
+import { useContext } from "react";
+import { ThemeContext } from "../context";
 
 export function useTheme() {
-    const { theme, toggleTheme } = useContext(ThemeContext)
-    return { theme, toggleTheme }
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  return { theme, toggleTheme };
 }
